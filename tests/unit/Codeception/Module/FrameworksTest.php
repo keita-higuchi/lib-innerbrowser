@@ -96,4 +96,10 @@ class FrameworksTest extends TestsForWeb
         $cest = new \Codeception\Test\Cest($this->module, 'looks:like::test', 'demo1Cest.php');
         $module->_failed($cest, new \PHPUnit\Framework\AssertionFailedError());
     }
+
+    public function testHaveRawHttpHeader()
+    {
+        $this->module->haveRawHttpHeader('name', 'value');
+        $this->assertEquals($this->module->headers['name'], 'value');
+    }
 }
